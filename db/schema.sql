@@ -13,11 +13,15 @@ CREATE TABLE users (
     last_name VARCHAR(255) NOT NULL,
     dob DATE NOT NULL,
     email VARCHAR(255) NOT NULL
+    -- password TEXT NOT NULL
 );
 
+-- Create a new user verifcation table rather than applying it to user table (verified email table)
+-- events table
+
 INSERT INTO users(user_picture, user_name, first_name, last_name, dob, email) VALUES
-('https://media.licdn.com/dms/image/D4E35AQE39nRIs8i93w/profile-framedphoto-shrink_800_800/0/1680028937815?e=1704952800&v=beta&t=kXWCG52Bl1aF_YhQlg6qV0Lyo67I0MVOlXO1YdQFyM4', 'Akira', 'Akira', 'Brown', '1998-12-21', 'akira@email.com'),
-('https://media.licdn.com/dms/image/D4E03AQEsnPHbNKvuqg/profile-displayphoto-shrink_800_800/0/1666462641490?e=1709769600&v=beta&t=a3Sa5OXl7l17IuGlYnJFmEWWyl1p37ClNESQqrSV61A', 'Chantal', 'Chantal', 'Gomez', '1999-05-13', 'chantal@email.com'),
+('https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Akira', 'Akira', 'Brown', '1998-12-21', 'akira@email.com'),
+('https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'Chantal', 'Chantal', 'Gomez', '1999-05-13', 'chantal@email.com'),
 ('https://media.licdn.com/dms/image/D4E03AQFScV89mnk4Aw/profile-displayphoto-shrink_800_800/0/1684863900954?e=1709769600&v=beta&t=8cJ9MdLnlv7RU0MPAFzqMsfG77JnHJQQb1dqIsZrweE', 'Onyx', 'Onyx', 'McQueen', '1997-01-06', 'onyx@email.com'),
 ('https://media.licdn.com/dms/image/D4E35AQHRK06z0YZmVw/profile-framedphoto-shrink_800_800/0/1680637669846?e=1704952800&v=beta&t=ppq0bIeV-nX3CsBjrE-iEuKNpk7R_n94Ku2t9t0M-yc', 'Naomi', 'Naomi', 'Pate', '1994-09-10', 'naomi@email.com'),
 ('https://media.licdn.com/dms/image/D4D03AQHKxVlTxMLP3A/profile-displayphoto-shrink_800_800/0/1667417011554?e=1709769600&v=beta&t=5hSB4KGm9jgWyhs8Y11GGrRPd6-qzmPg98tGnfv9pfY', 'Mussie', 'Mussie', 'Russom','1989-02-27', 'mussie@email.com'),
@@ -112,17 +116,20 @@ INSERT INTO notifications(user_id, messages, sender_id, sender_name, msg_type, i
 (2, 'Wants to Be Friends', 19, 'Noah', 'request', false, '2023-03-21', '16:00:00'),
 (1, 'Wants to Be Friends', 20, 'Isabella', 'request', false, '2023-03-21', '16:00:00');
 
-DROP TABLE IF EXISTS events;
-CREATE TABLE events (
-    id SERIAL PRIMARY KEY NOT NULL,
-    user_id INTEGER REFERENCES users(id),
-    event_date DATE NOT NULL,
-    event_time TIME NOT NULL,
-    google_location TEXT NOT NULL
-);
-INSERT INTO events(user_id, event_date, event_time, google_location) VALUES
-(1, '2023-12-21', '14:00:00', '47-10 Austell Pl 2nd floor, Long Island City, NY 11101'),
-(2, '2023-12-22', '15:00:00', '350 Fifth Avenue, New York, NY 10118'),
-(3, '2023-12-23', '16:00:00', '4 Pennsylvania Plaza, New York, NY 10001'),
-(4, '2023-12-24', '17:00:00', 'One World Trade Center, New York, NY 10007'),
-(5, '2023-12-25', '18:00:00', '89 E 42nd Street, New York, NY 10017');
+-- DROP TABLE IF EXISTS events;
+-- CREATE TABLE events (
+--     id SERIAL PRIMARY KEY NOT NULL,
+--     user_id INTEGER REFERENCES users(id),
+--     event_date DATE NOT NULL,
+--     event_time TIME NOT NULL,
+--     google_location TEXT NOT NULL
+-- );
+-- INSERT INTO events(user_id, event_date, event_time, google_location) VALUES
+-- (1, '2023-12-21', '14:00:00', '47-10 Austell Pl 2nd floor, Long Island City, NY 11101'),
+-- (2, '2023-12-22', '15:00:00', '350 Fifth Avenue, New York, NY 10118'),
+-- (3, '2023-12-23', '16:00:00', '4 Pennsylvania Plaza, New York, NY 10001'),
+-- (4, '2023-12-24', '17:00:00', 'One World Trade Center, New York, NY 10007'),
+-- (5, '2023-12-25', '18:00:00', '89 E 42nd Street, New York, NY 10017');
+
+
+-- DROP TABLE IF EXISTS verified_users;

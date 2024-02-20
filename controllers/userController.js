@@ -8,6 +8,8 @@ const {
   getUserByEmail,
   createUser,
   updateUserProfile,
+  createNewUser,
+  newLoginSession,
 } = require("../queries/users");
 
 router.get("/", async (req, res) => {
