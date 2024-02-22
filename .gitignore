@@ -1,5 +1,7 @@
 .env
-
+node_modules/
+**/node_modules
+/node_modules
 # Created by https://www.toptal.com/developers/gitignore/api/macos,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,node
 
@@ -78,7 +80,7 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+
 
 
 
