@@ -9,11 +9,8 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/search", async (req, res) => {
-  // const { search } = req.body;
   try {
     const response = await mainUserSearch(req.body);
-
-    // res.status(200).json(response);
     res.status(200).json(response);
   } catch (error) {
     res.status(500).json({
@@ -21,4 +18,5 @@ router.post("/search", async (req, res) => {
     });
   }
 });
+
 module.exports = router;
