@@ -9,6 +9,11 @@
     "dev": "nodemon server.js",
     "pg:init": "psql -U postgres -f db/schema.sql"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "./search_data"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-ws": "^5.0.2",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
