@@ -46,10 +46,9 @@ const createUser = async (data) => {
 const login = async (data) => {
   try {
     const { email, password } = data;
-    const foundUser = await db.any(
-      "SELECT * FROM users WHERE email = $1",
-      email
-    );
+    const foundUser = await db.any("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
     if (foundUser.length === 0) {
       throw {
         message: "error",
@@ -69,7 +68,11 @@ const login = async (data) => {
           {
             id: user.id,
             email: user.email,
-            username: user.user_name,
+            user_name: user.user_name,
+            first_name: user.first_name,
+            last_name: user.last_name,
+            dob: user.dob,
+            user_picture: user.user_picture,
           },
           process.env.JWT_TOKEN_SECRET_KEY,
           { expiresIn: "7d" }

@@ -2,12 +2,23 @@ const express = require("express");
 require("dotenv").config();
 const router = express.Router();
 const { parsedMessage } = require("../lib/helper/helper");
-const { createUser, login } = require("../queries/altUsers");
+const { createUser, login, getAllUsers } = require("../queries/altUsers");
 const checkEmpty = require("../lib/checkEmpty/checkEmpty");
 const validateData = require("../lib/validateData/validateData");
 const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 
-router.get("/", jwtMiddleware, async (req, res, next) => {});
+router.get("/", jwtMiddleware, async (req, res, next) => {
+  try {
+    const allUsers = await getAllUsers();
+    console.log(res.locals.decodedData);
+
+    if (allUsers.length === 0) {
+      res.json({ message: "please go create some users" });
+    } else {
+      res.json(allUsers);
+    }
+  } catch (error) {}
+});
 router.post("/create-user", checkEmpty, validateData, async (req, res) => {
   try {
     const createdUser = await createUser(req.body);
@@ -25,9 +36,10 @@ router.post("/create-user", checkEmpty, validateData, async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const foundUser = await login(req.body);
+
     if (foundUser.status === 500) {
       throw foundUser;
     } else {
