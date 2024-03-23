@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-    console.log(req.query);
+    // console.log(req.query);
     const response = await mainUserSearch(req.query);
     res.status(200).json(response);
   } catch (error) {

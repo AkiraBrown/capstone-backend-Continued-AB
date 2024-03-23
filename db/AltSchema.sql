@@ -55,6 +55,7 @@ CREATE TABLE events (
 DROP TABLE IF EXISTS friends_list;
 
 CREATE TABLE friends_list (
+    id SERIAL PRIMARY KEY NOT NULL,
     user_id INTEGER REFERENCES users(id),
     friend_id INTEGER REFERENCES users(id)
 );
@@ -71,5 +72,6 @@ CREATE TABLE wishlist(
     source TEXT NOT NULL,
     price TEXT NOT NULL,
     thumbnail TEXT NOT NULL,
-    delivery TEXT NOT NULL
+    delivery TEXT NOT NULL,
+    is_bought BOOLEAN NOT NULL
 );

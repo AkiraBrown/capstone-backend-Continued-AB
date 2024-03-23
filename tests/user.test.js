@@ -16,3 +16,10 @@ describe("A route that creates a new user", () => {
     expect(response._body.user_name).toBe("johnDoe");
   });
 });
+
+describe(`A route that enables user's `, async () => {
+  second;
+});
+describe(`A route that retrieves user's friends list`, async () => {
+  second;
+});

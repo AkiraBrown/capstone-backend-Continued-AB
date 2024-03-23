@@ -86,8 +86,21 @@ const login = async (data) => {
   }
 };
 
+const getUsersFriends = async (id) => {
+  try {
+    const allFriends = await db.any(
+      `SELECT * FROM users INNER JOIN FRIENDS_LIST ON FRIENDS_LIST.user_id = users.id WHERE FRIENDS_LIST.friend_id = $1`,
+      id
+    );
+    return allFriends;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllUsers,
   createUser,
   login,
+  getUsersFriends,
 };
