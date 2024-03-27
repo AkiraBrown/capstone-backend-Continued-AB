@@ -13,7 +13,7 @@ const createWishlistItem = async (data) => {
     delivery,
   } = data;
   try {
-    const addedItem = await db.any(
+    const addedItem = await db.one(
       "INSERT INTO wishlist(user_id,title,link,product_link,product_id,source,price,thumbnail,delivery,is_bought) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *",
       [
         user_id,
@@ -29,7 +29,9 @@ const createWishlistItem = async (data) => {
       ]
     );
     return addedItem;
-  } catch (error) {}
+  } catch (error) {
+    return error;
+  }
 };
 
 const deleteWishlistItem = async (id) => {
@@ -40,7 +42,7 @@ const deleteWishlistItem = async (id) => {
     );
     return deleteditem;
   } catch (error) {
-    throw error;
+    return error;
   }
 };
 
@@ -55,4 +57,21 @@ const updateWishlistItem = async (id, is_bought) => {
     return error;
   }
 };
-module.exports = { createWishlistItem, deleteWishlistItem, updateWishlistItem };
+
+const getUserWishlistItems = async (id) => {
+  try {
+    const foundWishlist = await db.any(
+      `SELECT * FROM wishlist WHERE user_id=$1 RETURNING *`,
+      id
+    );
+    return foundWishlist;
+  } catch (error) {
+    return error;
+  }
+};
+module.exports = {
+  createWishlistItem,
+  deleteWishlistItem,
+  updateWishlistItem,
+  getUserWishlistItems,
+};

@@ -12,7 +12,7 @@ const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 router.get("/", jwtMiddleware, async (req, res, next) => {
   try {
     const allUsers = await getAllUsers();
-    console.log(res.locals.decodedData);
+    // console.log(res.locals.decodedData);
 
     if (allUsers.length === 0) {
       res.json({ message: "please go create some users" });

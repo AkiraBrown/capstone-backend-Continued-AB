@@ -54,7 +54,7 @@ router.post("/add-new-friend", jwtMiddleware, async (req, res) => {
 });
 
 router.delete(
-  "/delete/:user_id/:/:friend_id",
+  "/delete/:user_id/:friend_id",
   jwtMiddleware,
   async (req, res) => {
     const { user_id, friend_id } = req.params;

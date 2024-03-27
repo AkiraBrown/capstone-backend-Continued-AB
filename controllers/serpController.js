@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
 
 router.get("/search", async (req, res) => {
   try {
-    // console.log(req.query);
     const response = await mainUserSearch(req.query);
     res.status(200).json(response);
   } catch (error) {
@@ -19,15 +18,5 @@ router.get("/search", async (req, res) => {
     });
   }
 });
-router.get("/searchAlt", async (req, res) => {
-  console.log(req.query);
-  const { search } = req.query;
-  try {
-    res.status(200).json(search);
-  } catch (error) {
-    res.status(500).json({
-      error: error,
-    });
-  }
-});
+
 module.exports = router;

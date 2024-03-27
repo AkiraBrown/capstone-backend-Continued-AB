@@ -1,16 +1,19 @@
 const express = require("express");
 const router = express.Router();
-
 const {
   getNotification,
   addNotification,
   getAllNotifications,
   deleteNotification,
   updateNotifications,
-} = require("../queries/notification");
+} = require("../queries/altNotification");
+const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 
-//This grabs the whole notification table
-router.get("/", async (req, res) => {
+// Major task for this controller...
+//TODO
+/// Implement express-ws to constantly feed back the user's notifications
+
+router.get("/", jwtMiddleware, async (req, res) => {
   try {
     const allNotif = await getAllNotifications();
     res.status(200).json(allNotif);
@@ -19,7 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 // This grabs all notifications relating to a specific user
-router.get("/:id", async (req, res) => {
+router.get("/:id", jwtMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const foundNoti = await getNotification(id);
@@ -33,7 +36,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 // Creates a new Notification
-router.post("/new-notification", async (req, res) => {
+router.post("/new-notification", jwtMiddleware, async (req, res) => {
   try {
     const addedNoti = await addNotification(req.body);
     res.status(200).json(addedNoti);
@@ -43,7 +46,7 @@ router.post("/new-notification", async (req, res) => {
 });
 
 //This deletes a notification
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", jwtMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const deletedNotification = await deleteNotification(id);
@@ -58,7 +61,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 //This Updates a notification based on whether they've read it or not
-router.put("/update-notification", async (req, res) => {
+router.put("/update-notification", jwtMiddleware, async (req, res) => {
   try {
     const updatedNoti = await updateNotifications(req.body);
     res.status(200).json(updatedNoti);
@@ -66,5 +69,4 @@ router.put("/update-notification", async (req, res) => {
     res.status(500).json({ error: error });
   }
 });
-
 module.exports = router;
