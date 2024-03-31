@@ -44,7 +44,6 @@ router.post("/create-user", checkEmpty, validateData, async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const foundUser = await login(req.body);
-
     if (foundUser.status === 500) {
       throw foundUser;
     } else {
