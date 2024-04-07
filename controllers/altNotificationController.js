@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+// const expressWs = require("express-ws")(express());
 const {
   getNotification,
   addNotification,
@@ -69,4 +70,12 @@ router.put("/update-notification", jwtMiddleware, async (req, res) => {
     res.status(500).json({ error: error });
   }
 });
+
+// // Ground work for websockets
+// router.ws("/echo", async (ws, req) => {
+//   ws.on("message", (msg) => {
+//     console.log(msg);
+//   });
+//   console.log("Socket");
+// });
 module.exports = router;

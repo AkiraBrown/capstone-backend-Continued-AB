@@ -61,9 +61,10 @@ const updateWishlistItem = async (id, is_bought) => {
 const getUserWishlistItems = async (id) => {
   try {
     const foundWishlist = await db.any(
-      `SELECT * FROM wishlist WHERE user_id=$1 RETURNING *`,
+      "SELECT * FROM wishlist WHERE user_id = $1",
       id
     );
+
     return foundWishlist;
   } catch (error) {
     return error;
