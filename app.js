@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json()); // Parse incoming JSON
-app.use(cors("*")); // Enable Cross Origin Resource Sharing
+app.use(cors("")); // Enable Cross Origin Resource Sharing
 
 // ROUTES
 
