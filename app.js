@@ -9,7 +9,7 @@ const cors = require("cors");
 // const UserController = require("./controllers/UserController");
 // const WishlistController = require("./controllers/WishlistController");
 // const FriendController = require("./controllers/FriendController");
-// const NotificationController = require("./controllers/NotificationController");
+const NotificationController = require("./controllers/NotificationController");
 const EventsController = require("./controllers/EventsController");
 // CONFIG
 const app = express();
@@ -28,7 +28,7 @@ app.use(cors("*")); // Enable Cross Origin Resource Sharing
 // app.use("/serp", serpController);
 // app.use("/friend", FriendController);
 // app.use("/wishlist", WishlistController);
-// app.use("/notifications", NotificationController);
+app.use("/notifications", NotificationController);
 app.use("/events", EventsController);
 
 app.use("/", (req, res) => {
