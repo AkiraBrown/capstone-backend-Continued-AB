@@ -7,7 +7,7 @@ const cors = require("cors");
 
 // const serpController = require("./controllers/serpController");
 // const UserController = require("./controllers/UserController");
-// const WishlistController = require("./controllers/WishlistController");
+const WishlistController = require("./controllers/WishlistController");
 // const FriendController = require("./controllers/FriendController");
 const NotificationController = require("./controllers/NotificationController");
 const EventsController = require("./controllers/EventsController");
@@ -27,7 +27,7 @@ app.use(cors("*")); // Enable Cross Origin Resource Sharing
 // app.use("/user", UserController);
 // app.use("/serp", serpController);
 // app.use("/friend", FriendController);
-// app.use("/wishlist", WishlistController);
+app.use("/wishlist", WishlistController);
 app.use("/notifications", NotificationController);
 app.use("/events", EventsController);
 
