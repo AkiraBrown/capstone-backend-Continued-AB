@@ -31,7 +31,6 @@ router.get("/friend-lookup/:friend_id", jwtMiddleware, async (req, res) => {
         error: friendData.error,
       };
     } else {
-      console.log(friendData);
       res.status(200).json(friendData);
     }
   } catch (error) {
