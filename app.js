@@ -5,7 +5,7 @@ const cors = require("cors");
 
 // CONTROLLERS
 
-const UserController = require("./controllers/UserController");
+const UsersController = require("./controllers/UsersController");
 const FriendController = require("./controllers/FriendController");
 
 const serpController = require("./controllers/serpController");
@@ -25,7 +25,7 @@ app.use(cors("*")); // Enable Cross Origin Resource Sharing
 
 // ROUTES
 
-app.use("/user", UserController);
+app.use("/user", UsersController);
 app.use("/serp", serpController);
 app.use("/friend", FriendController);
 app.use("/wishlist", WishlistController);
