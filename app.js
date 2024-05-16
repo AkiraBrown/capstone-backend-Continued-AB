@@ -24,12 +24,12 @@ app.use(cors("*")); // Enable Cross Origin Resource Sharing
 
 // ROUTES
 
-app.use("/user", UserController);
-app.use("/serp", serpController);
-app.use("/friend", FriendController);
-app.use("/wishlist", WishlistController);
-app.use("/notifications", NotificationController);
-app.use("/events", EventsController);
+// app.use("/user", UserController);
+// app.use("/serp", serpController);
+// app.use("/friend", FriendController);
+// app.use("/wishlist", WishlistController);
+// app.use("/notifications", NotificationController);
+// app.use("/events", EventsController);
 
 app.use("/", (req, res) => {
   console.log("Welcome to Giftune!");
