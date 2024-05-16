@@ -16,7 +16,9 @@ router.get("/", jwtMiddleware, async (req, res, next) => {
     } else {
       res.json(allUsers);
     }
-  } catch (error) {}
+  } catch (error) {
+    res.status(500).json({ message: error.message, error: error.error });
+  }
 });
 
 //Create a new user
