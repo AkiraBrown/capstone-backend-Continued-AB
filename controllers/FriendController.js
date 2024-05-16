@@ -7,7 +7,7 @@ const {
   addNewFriend,
   deleteFriendFriendsList,
 } = require("../queries/Friends");
-const { getUsersFriends } = require("../queries/Users");
+const { getUsersFriends } = require("../queries/users");
 
 // Gets a logged in user's friends list for the dashboard page
 router.get("/list/:id", jwtMiddleware, async (req, res) => {

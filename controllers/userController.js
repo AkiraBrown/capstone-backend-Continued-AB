@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const router = express.Router();
 const { parsedMessage } = require("../lib/helper/helper");
-const { createUser, login, getAllUsers } = require("../queries/Users");
+const { createUser, login, getAllUsers } = require("../queries/users");
 const checkEmpty = require("../lib/checkEmpty/checkEmpty");
 const validateData = require("../lib/validateData/validateData");
 const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
