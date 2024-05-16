@@ -5,10 +5,11 @@ const cors = require("cors");
 
 // CONTROLLERS
 
-const serpController = require("./controllers/serpController");
 // const UserController = require("./controllers/UserController");
-const WishlistController = require("./controllers/WishlistController");
 const FriendController = require("./controllers/FriendController");
+
+const serpController = require("./controllers/serpController");
+const WishlistController = require("./controllers/WishlistController");
 const NotificationController = require("./controllers/NotificationController");
 const EventsController = require("./controllers/EventsController");
 // CONFIG

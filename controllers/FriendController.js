@@ -14,7 +14,6 @@ router.get("/list/:id", jwtMiddleware, async (req, res) => {
   const { id } = req.params;
   try {
     const allFriends = await getUsersFriends(id);
-
     res.status(200).json(allFriends);
   } catch (error) {
     res.status(404).json({ message: error.message, error: error.error });
