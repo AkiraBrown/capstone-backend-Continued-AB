@@ -10,7 +10,7 @@ const cors = require("cors");
 // const WishlistController = require("./controllers/WishlistController");
 // const FriendController = require("./controllers/FriendController");
 // const NotificationController = require("./controllers/NotificationController");
-// const EventsController = require("./controllers/EventsController");
+const EventsController = require("./controllers/EventsController");
 // CONFIG
 const app = express();
 
