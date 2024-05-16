@@ -6,7 +6,7 @@ const cors = require("cors");
 // CONTROLLERS
 
 const serpController = require("./controllers/serpController");
-const UserController = require("./controllers/UserController");
+const UserController = require("./controllers/UserController.js");
 const WishlistController = require("./controllers/WishlistController");
 const FriendController = require("./controllers/FriendController");
 const NotificationController = require("./controllers/NotificationController");
