@@ -6,7 +6,7 @@ const cors = require("cors");
 // CONTROLLERS
 
 const serpController = require("./controllers/serpController");
-const UserController = require("./controllers/UserController.js");
+const UserController = require("./controllers/UserController");
 const WishlistController = require("./controllers/WishlistController");
 const FriendController = require("./controllers/FriendController");
 const NotificationController = require("./controllers/NotificationController");
@@ -20,12 +20,12 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json()); // Parse incoming JSON
-app.use(cors("")); // Enable Cross Origin Resource Sharing
+app.use(cors("*")); // Enable Cross Origin Resource Sharing
 
 // ROUTES
 
-app.use("/serp", serpController);
 app.use("/user", UserController);
+app.use("/serp", serpController);
 app.use("/friend", FriendController);
 app.use("/wishlist", WishlistController);
 app.use("/notifications", NotificationController);
