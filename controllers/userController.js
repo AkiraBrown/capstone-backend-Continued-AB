@@ -3,7 +3,6 @@ require("dotenv").config();
 const router = express.Router();
 const { parsedMessage } = require("../lib/helper/helper");
 const { createUser, login, getAllUsers } = require("../queries/Users");
-// const { grabFriendProfile } = require("../queries/altFriends");
 const checkEmpty = require("../lib/checkEmpty/checkEmpty");
 const validateData = require("../lib/validateData/validateData");
 const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
@@ -12,8 +11,6 @@ const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 router.get("/", jwtMiddleware, async (req, res, next) => {
   try {
     const allUsers = await getAllUsers();
-    // console.log(res.locals.decodedData);
-
     if (allUsers.length === 0) {
       res.json({ message: "please go create some users" });
     } else {
