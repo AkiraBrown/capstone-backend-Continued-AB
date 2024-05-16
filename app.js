@@ -6,10 +6,11 @@ const cors = require("cors");
 // CONTROLLERS
 
 const serpController = require("./controllers/serpController");
-const altUserController = require("./controllers/altUserController");
-const altWishlistController = require("./controllers/altWishlistController");
-const altFriendController = require("./controllers/altFriendController");
-const altNotificationController = require("./controllers/altNotificationController");
+const UserController = require("./controllers/UserController");
+const WishlistController = require("./controllers/WishlistController");
+const FriendController = require("./controllers/FriendController");
+const NotificationController = require("./controllers/NotificationController");
+const EventsController = require("./controllers/EventsController");
 // CONFIG
 const app = express();
 
@@ -24,10 +25,11 @@ app.use(cors("*")); // Enable Cross Origin Resource Sharing
 // ROUTES
 
 app.use("/serp", serpController);
-app.use("/alt", altUserController);
-app.use("/friend", altFriendController);
-app.use("/wishlist", altWishlistController);
-app.use("/notifications", altNotificationController);
+app.use("/user", UserController);
+app.use("/friend", FriendController);
+app.use("/wishlist", WishlistController);
+app.use("/notifications", NotificationController);
+app.use("/events", EventsController);
 
 app.use("/", (req, res) => {
   console.log("Welcome to Giftune!");

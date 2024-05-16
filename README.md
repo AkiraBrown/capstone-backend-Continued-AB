@@ -19,8 +19,8 @@ An app designed to keep you on top of your loved ones’ upcoming birthdays wher
 
 ### Deployed Links
 
-frontend: [Giftune on Netlify](https://giftune.netlify.app/)
-backend: [Giftune on Render](https://capstone-backend-er7b.onrender.com)
+frontend: [Giftune on Netlify (TBC)]()
+backend: [Giftune on Render (TBC)]()
 database: []()
 
 #### Blockers we had during development
@@ -28,10 +28,6 @@ database: []()
 - Basic SQL queries everyone needed weren't made beforehand and we had multiple queries doing the same thing. We did some cleanup and fixed that as a group.
 - At one point we needed to figure out how to store the user login in local storage or in state on App.js so we could get the user information passed around properly and make a conditional for the sidebar that should only show up after you log in. We asked Instructor Pak for help on this since we were at a loss to get this working. We ended up storing the user in both local storage and in state.
 - Logic for maipulating the upcoming dates and sorting them was confusing and a couple of us put our heads together to work it out and then used chatgpt to clean up the code a bit before we finished making it more efficient.
-
-# Express Skeleton
-
-This is a skeleton for a backend web application using Express.js. It is intended to be used as a starting point for new projects. It is not intended to be a production-ready application.
 
 ## Express Setup
 
@@ -59,3 +55,20 @@ npm run dev
 - [nodemon](https://nodemon.io/) - Development server
 - [cors](https://www.npmjs.com/package/cors) - Cross-origin resource sharing
 - [morgan](https://www.npmjs.com/package/morgan) - HTTP request logger
+
+# Continuation
+
+With Giftune in it's previous state I've been able to implement some more features into giftune such as enabling users to search for any item they want on their wishlist and to add each other on the implementing events. This fork of Giftune is only me working on the project.
+
+## Challenges
+
+### **Searching for items**
+
+One of the major challenges we encountered when we first approached interacting with
+multiple ecommerce stores was acquire information from multiple places. Since each ecommerce store would have their own API that feeds back information differently, so me and my team chose to simplify the function by enabling the user to put the link into a form and keep track of the wishlists that way. After our demo day I found a solution that scrapes the data off of Google shopping. I came to solution after reviewing Google's shopping API to only find that the API didn't provide the results I needed, so I found SerpAPI that enables me to safely scrape data off of the shopping tab in Google.
+
+### New Problem Arises
+
+After connecting SerpAPI to my backend I was able to get all the information that I needed for users to pick out items to add to their wishlist, but there was a new problem... _I only have 100 requests a month._
+
+This new problem meant that it would be very easy for all my requests to be used up if this application ever makes it to production. So to solve for this I used the `fs` package in NODEjs to create JSON files of each brand new request. Then when a user makes a request that matches the filename on one of JSON results we return that data instead of making a fresh request from SerpAPI.

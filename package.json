@@ -7,8 +7,7 @@
     "test": "jest",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "pg:init": "psql -U postgres -f db/schema.sql",
-    "pg:alt": "psql -U postgres -f db/AltSchema.sql"
+    "pg:init": "psql -U postgres -f db/schema.sql"
   },
   "nodemonConfig": {
     "ignore": [

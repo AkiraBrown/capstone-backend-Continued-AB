@@ -7,7 +7,7 @@ const {
   getAllNotifications,
   deleteNotification,
   updateNotifications,
-} = require("../queries/altNotification");
+} = require("../queries/Notification");
 const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 
 // Major task for this controller...

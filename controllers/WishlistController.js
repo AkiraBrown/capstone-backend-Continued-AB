@@ -7,7 +7,7 @@ const {
   deleteWishlistItem,
   updateWishlistItem,
   getUserWishlistItems,
-} = require("../queries/altWishlist");
+} = require("../queries/Wishlist");
 
 router.get("/:id", jwtMiddleware, async (req, res) => {
   try {
