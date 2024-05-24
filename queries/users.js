@@ -10,6 +10,17 @@ const getAllUsers = async () => {
     return error;
   }
 };
+const getUsersExceptRequester = async (id) => {
+  try {
+    const restOfUsers = await db.any(
+      "SELECT user_picture,user_name, first_name, last_name, email, dob FROM users WHERE id <> $1",
+      [id]
+    );
+    return restOfUsers;
+  } catch (error) {
+    return error;
+  }
+};
 
 const createUser = async (data) => {
   try {
@@ -103,4 +114,5 @@ module.exports = {
   createUser,
   login,
   getUsersFriends,
+  getUsersExceptRequester,
 };

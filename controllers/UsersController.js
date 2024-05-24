@@ -2,7 +2,12 @@ const express = require("express");
 require("dotenv").config();
 const router = express.Router();
 const { parsedMessage } = require("../lib/helper/helper");
-const { createUser, login, getAllUsers } = require("../queries/users");
+const {
+  createUser,
+  login,
+  getAllUsers,
+  getUsersExceptRequester,
+} = require("../queries/users");
 const checkEmpty = require("../lib/checkEmpty/checkEmpty");
 const validateData = require("../lib/validateData/validateData");
 const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
@@ -16,6 +21,14 @@ router.get("/", jwtMiddleware, async (req, res, next) => {
     } else {
       res.json(allUsers);
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message, error: error.error });
+  }
+});
+router.get("/all-except/:id", jwtMiddleware, async (req, res) => {
+  try {
+    const filteredUsers = await getUsersExceptRequester(req.params.id);
+    res.status(200).json(filteredUsers);
   } catch (error) {
     res.status(500).json({ message: error.message, error: error.error });
   }
