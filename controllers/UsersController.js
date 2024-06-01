@@ -7,6 +7,7 @@ const {
   login,
   getAllUsers,
   getUsersExceptRequester,
+  getUsersFriends,
 } = require("../queries/users");
 const checkEmpty = require("../lib/checkEmpty/checkEmpty");
 const validateData = require("../lib/validateData/validateData");
@@ -27,8 +28,18 @@ router.get("/", jwtMiddleware, async (req, res, next) => {
 });
 router.get("/all-except/:id", jwtMiddleware, async (req, res) => {
   try {
+    const usersFriends = await getUsersFriends(req.params.id);
     const filteredUsers = await getUsersExceptRequester(req.params.id);
-    res.status(200).json(filteredUsers);
+    let formatted = filteredUsers.map((item) => {
+      let changeItem = { ...item };
+      if (usersFriends.includes(item.id)) {
+        changeItem.is_friend = true;
+      } else {
+        changeItem.is_friend = false;
+      }
+      return changeItem;
+    });
+    res.status(200).json(formatted);
   } catch (error) {
     res.status(500).json({ message: error.message, error: error.error });
   }
