@@ -1,8 +1,8 @@
 const fs = require("fs");
 const Axios = require("axios");
 require("dotenv").config();
-const mainUserSearch = async ({ search }) => {
-  const formatSearch = search.toLowerCase().replace(/\s/g, "_");
+
+const mainUserSearch = async (formatSearch) => {
   if (fs.existsSync(`./search_data/${formatSearch}.json`)) {
     return JSON.parse(fs.readFileSync(`./search_data/${formatSearch}.json`));
   } else {

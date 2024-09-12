@@ -12,6 +12,7 @@ const serpController = require("./controllers/serpController");
 const WishlistController = require("./controllers/WishlistController");
 const NotificationController = require("./controllers/NotificationController");
 const EventsController = require("./controllers/EventsController");
+const GoogleController = require("./controllers/Google.Controller");
 // CONFIG
 const app = express();
 
@@ -31,6 +32,7 @@ app.use("/friend", FriendController);
 app.use("/wishlist", WishlistController);
 app.use("/notifications", NotificationController);
 app.use("/events", EventsController);
+app.use("/google", GoogleController);
 
 app.use("/", (req, res) => {
   console.log("Welcome to Giftune!");
