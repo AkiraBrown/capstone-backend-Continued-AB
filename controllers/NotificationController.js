@@ -16,8 +16,8 @@ const jwtMiddleware = require("../lib/authMiddleware/jwtMiddleware");
 
 router.get("/", jwtMiddleware, async (req, res) => {
   try {
-    const allNotif = await getAllNotifications();
-    res.status(200).json(allNotif);
+    const allNotifications = await getAllNotifications();
+    res.status(200).json(allNotifications);
   } catch (error) {
     res.status(404).json({ error: error });
   }

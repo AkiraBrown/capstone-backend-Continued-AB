@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "development") {
 
 app.use(express.json()); // Parse incoming JSON
 app.use(cors("*")); // Enable Cross Origin Resource Sharing
-
+/* TODO : Change CORS to only accept request from giftune frontend when deployed and localhost when in local environment */
 // ROUTES
 
 app.use("/user", UsersController);
